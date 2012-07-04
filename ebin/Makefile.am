@@ -43,6 +43,7 @@ BEAM_FILES = exmpp.app							\
 	     exmpp_server_session.beam					\
 	     exmpp_server_tls.beam					\
 	     exmpp_sasl_digest.beam					\
+			 exmpp_sasl_facebook.beam 			\
 	     exmpp_session.beam						\
 	     exmpp_socket.beam						\
 	     exmpp_bosh.beam						\
