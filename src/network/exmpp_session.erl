@@ -875,7 +875,7 @@ stream_opened(#xmlstreamelement{element=Packet}, State) ->
 wait_for_sasl_response_fb(#xmlstreamelement{element=#xmlel{name='challenge'} = Element}, State) ->
     #state{connection = Module, connection_ref = ConnRef, sasl_state = SASL_State} = State,
     Challenge = base64:decode_to_string(exmpp_xml:get_cdata(Element)),
-    io:format("CHALLENGE ~p", [Challenge]),
+    %%io:format("CHALLENGE ~p", [Challenge]),
     case exmpp_sasl_facebook:mech_step(SASL_State, Challenge) of
          {error, Reason} ->
               {error, Reason};
@@ -899,7 +899,7 @@ wait_for_sasl_response(#xmlstreamelement{element=#xmlel{name='success'}}, State)
 wait_for_sasl_response(#xmlstreamelement{element=#xmlel{name='challenge'} = Element}, State) ->
     #state{connection = Module, connection_ref = ConnRef, sasl_state = SASL_State} = State,
     Challenge = base64:decode_to_string(exmpp_xml:get_cdata(Element)),
-    io:format("WRONG ~p", [Challenge]),
+    %%io:format("WRONG ~p", [Challenge]),
     case exmpp_sasl_digest:mech_step(SASL_State, Challenge) of
          {error, Reason} ->
               {error, Reason};

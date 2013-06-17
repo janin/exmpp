@@ -70,7 +70,6 @@ mech_step(#state{step = 2, apikey = ApiKey, secret = Secret, cnonce = Cnonce} = 
                                           {"call_id", 0},
                                           {"cnonce", Cnonce}, 
                                           {"nonce", Nonce}]),
-           io:format("~p", [ReplyQuery]),
            {continue, ReplyQuery, State#state{step = 4, nonce=Nonce, rspauth = ""}}
     end;
 
@@ -90,7 +89,6 @@ mech_step(#state{step = 4, secret = UserName, rspauth = RspAuth}, ServerOut) ->
     end;
 
 mech_step(_A, B) ->
-    io:format("~p", [B]),
     {error, 'bad-protocol'}.
 
 %% @spec (S) -> [{Key, Value}] | bad
